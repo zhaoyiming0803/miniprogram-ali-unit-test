@@ -1,5 +1,7 @@
 import '../../pages/index'
 
+jest.mock('../../utils/request.js')
+
 const currentPage = global.wxPageInstance
 
 describe('index page unit testing', () => {
