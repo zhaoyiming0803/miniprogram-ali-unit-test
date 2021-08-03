@@ -1,35 +1,43 @@
-Page({
-  onLoad(query) {
-    // 页面加载
-    console.info(`Page onLoad with query: ${JSON.stringify(query)}`);
+import { enhancePage } from '../../utils/enhancePage'
+
+enhancePage({
+  data: {
+    a: '',
+    b: '',
+    res2: ''
   },
-  onReady() {
-    // 页面加载完成
+  async onLoad () {
+    this.init()
   },
-  onShow() {
-    // 页面显示
+  async init () {
+    const res1 = await this.getRes1()
+    this.setData({
+      a: res1.a,
+      b: res1.b
+    })
+    const res2 = await this.getRes2()
+    this.setData({
+      res2
+    })
   },
-  onHide() {
-    // 页面隐藏
+  getRes1 () {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve({
+          a: 'this is value a from res1',
+          b: 'this is value b from res1'
+        })
+      })
+    })
   },
-  onUnload() {
-    // 页面被关闭
-  },
-  onTitleClick() {
-    // 标题被点击
-  },
-  onPullDownRefresh() {
-    // 页面被下拉
-  },
-  onReachBottom() {
-    // 页面被拉到底部
-  },
-  onShareAppMessage() {
-    // 返回自定义分享信息
-    return {
-      title: 'My App',
-      desc: 'My App description',
-      path: 'pages/index/index',
-    };
-  },
-});
+  getRes2 () {
+    return new Promise((resolve) => {
+      if (!this.data.a) {
+        resolve()
+      }
+      setTimeout(() => {
+        resolve('res2')
+      })
+    })
+  }
+})

@@ -1,4 +1,7 @@
 
 <view>
-  this is a blank page
+  <header headerContent="this is header content"></header>
+  <view>res1: {{ res1 }}</view>
+  <view>res2: {{ res2 }}</view>
+  <footer></footer>
 </view>
