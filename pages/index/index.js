@@ -12,8 +12,8 @@ enhancePage({
   async init () {
     const res1 = await this.getRes1()
     this.setData({
-      // a: res1.a,
-      // b: res1.b
+      a: res1.a,
+      b: res1.b
     })
     const res2 = await this.getRes2()
     this.setData({

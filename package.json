@@ -4,7 +4,7 @@
   },
   "devDependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.14.5",
-    "husky": "^7.0.1",
+    "husky": "^4.3.8",
     "jest": "^27.0.6",
     "miniprogram-simulate": "^1.4.1"
   },
