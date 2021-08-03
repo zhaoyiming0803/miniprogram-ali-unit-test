@@ -10,18 +10,18 @@ describe('index page unit testing', () => {
       jest.spyOn(currentPage, 'init')
       currentPage.onLoad()
     })
-    it('should init on onLoad lifecycle', () => {
+    test('should init on onLoad lifecycle', () => {
       expect(currentPage.init).toBeCalled()
     })
-    it('getRes1 function should be called and returns a valid value', async () => {
+    test('getRes1 function should be called and returns a valid value', async () => {
       const res1 = await currentPage.getRes1()
       const keys = Object.keys(res1)
       expect(['a', 'b']).toEqual(expect.arrayContaining(keys))
     })
-    it('getRes1 function should be called and returns a valid value', async () => {
+    test('getRes1 function should be called and returns a valid value', async () => {
       await expect(currentPage.getRes2()).resolves.toBe('res2')
     })
-    it('test data', () => {
+    test('test data', () => {
       expect(currentPage.data.res2).toBe('res2')
     })
   })
