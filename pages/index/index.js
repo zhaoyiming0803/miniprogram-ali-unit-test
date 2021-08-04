@@ -1,5 +1,5 @@
 import { enhancePage } from '../../utils/enhancePage'
-import request from '../../utils/request'
+import apis from '../../apis'
 
 enhancePage({
   data: {
@@ -21,23 +21,13 @@ enhancePage({
       res2
     })
   },
-  getRes1 () {
-    return request({
-      a: 'this is value a from res1',
-      b: 'this is value b from res1'
-    })
+  async getRes1 () {
+    return apis.getRes1()
   },
   getRes2 () {
     if (!this.data.a) {
       return Promise.resolve()
     }
-    return request({
-      apiRoot: 'weapp',
-      url: '/address/get',
-      data: {
-        partnerId: 123,
-      },
-      method: 'GET'
-    })
+    return apis.getRes2()
   }
 })

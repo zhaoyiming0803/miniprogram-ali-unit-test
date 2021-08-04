@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "test": "jest"
+    "test": "jest --coverage"
   },
   "devDependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.14.5",
@@ -15,6 +15,10 @@
     ],
     "setupFiles": [
       "./__tests__/ali.js"
+    ],
+    "collectCoverageFrom": [
+      "./pages/**/*.js",
+      "./utils/*.js"
     ]
   },
   "husky": {

@@ -10,4 +10,7 @@ test('compareVersion', () => {
   // 以下 case 是错误的
   const result2 = compareVersion('2.1', '2.1.2')
   expect(result2).toBe(0)
+
+  const result3 = compareVersion('2.2', '2.1.2')
+  expect(result3).toBe(1)
 })

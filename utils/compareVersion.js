@@ -9,7 +9,7 @@ export const compareVersion = (v1, v2) => {
       return 1;
     }
 
- if (Number.parseInt(s1[i]) < Number.parseInt(s2[i])) {
+  if (Number.parseInt(s1[i]) < Number.parseInt(s2[i])) {
       return -1;
     }
   }

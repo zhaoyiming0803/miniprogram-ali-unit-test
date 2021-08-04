@@ -1,13 +1,3 @@
-const app = getApp()
-
-export function showLoading() {
-  my.showLoading()
-}
-
-export function hideLoading() {
-  my.hideLoading()
-}
-
 export function enhancePage(options) {
   function enhance(options) {
     const originOnLoad = options.onLoad;

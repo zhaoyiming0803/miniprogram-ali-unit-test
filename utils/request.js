@@ -1,7 +1,7 @@
-export default function request (data) {
+export default function request () {
   return new Promise((resolve) => {
     setTimeout(() => {
-      resolve(data)
-    }, 1000)
+      resolve('正常的http请求返回值')
+    })
   })
 }
