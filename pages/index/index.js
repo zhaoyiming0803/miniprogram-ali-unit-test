@@ -26,6 +26,16 @@ enhancePage({
   },
   getRes2 () {
     if (!this.data.a) {
+      my.showToast({
+        type: 'success',
+        content: '操作成功',
+        duration: 3000,
+        success: () => {
+          my.alert({
+            title: 'toast 消失了',
+          });
+        }
+      })
       return Promise.resolve()
     }
     return apis.getRes2()

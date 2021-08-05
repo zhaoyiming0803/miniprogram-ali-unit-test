@@ -4,7 +4,9 @@ global.my = {
   showModal: jest.fn(),
   request: jest.fn(),
   getStorageSync: jest.fn(),
-  showShareMenu: jest.fn()
+  showShareMenu: jest.fn(),
+  showToast: jest.fn(),
+  alert: jest.fn()
 }
 
 global.getApp = jest.fn()

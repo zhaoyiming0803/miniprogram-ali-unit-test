@@ -37,6 +37,8 @@ describe('index page unit testing', () => {
   
     describe('非正常返回值', () => {
       beforeAll(() => {
+        jest.spyOn(my, 'showToast')
+
         getRes1.mockImplementation(() => {
           return new Promise((resolve) => {
             resolve({
@@ -44,11 +46,18 @@ describe('index page unit testing', () => {
             })
           })
         })
+
+        // getRes2.mockImplementation(() => {
+        //   return new Promise((resolve) => {
+        //     resolve()
+        //   })
+        // })
   
         currentPage.onLoad()
       })
   
       test('getRes1 function should be called and not returns a valid value', async () => {
+        expect(my.showToast).toBeCalled()
         expect(currentPage.data.a).toBeUndefined()
         expect(currentPage.data.res2).toBeUndefined()
       })
