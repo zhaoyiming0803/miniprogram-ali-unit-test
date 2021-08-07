@@ -1,13 +1,21 @@
 import { enhancePage } from '../../utils/enhancePage'
 import apis from '../../apis'
 
+const app = getApp()
+
 enhancePage({
   data: {
     a: '',
     b: '',
-    res2: ''
+    res2: '',
+    globalData: app.globalData,
+    isAllowSubmit: true
   },
-  async onLoad () {
+  async onLoad (options) {
+    const { merchtypeId } = options
+    this.setData({
+      merchtypeId
+    })
     this.init()
   },
   async init () {
@@ -17,9 +25,11 @@ enhancePage({
       b: res1.b
     })
     const res2 = await this.getRes2()
-    this.setData({
-      res2
-    })
+    if (res2) {
+      this.setData({
+        res2
+      })
+    }
   },
   async getRes1 () {
     return apis.getRes1()
@@ -39,5 +49,23 @@ enhancePage({
       return Promise.resolve()
     }
     return apis.getRes2()
+  },
+  onRefresh () {
+    getApp().globalData.token = 'this is token'
+    getApp().globalData.userId = 'this is userId'
+    getApp().globalData.openId = 'this is openId'
+    getApp().globalData.commonPartnerData = 'this is commonPartnerData'
+  },
+  submit () {
+    if (!this.data.isAllowSubmit) {
+      return my.alert({
+        content: '请勿重复提交订单'
+      })
+    }
+    this.data.isAllowSubmit = false
+    setTimeout(() => {
+      console.log('mock sumit order......')
+      this.data.isAllowSubmit = true
+    }, 3000)
   }
 })

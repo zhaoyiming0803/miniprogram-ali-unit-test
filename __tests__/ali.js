@@ -6,10 +6,15 @@ global.my = {
   getStorageSync: jest.fn(),
   showShareMenu: jest.fn(),
   showToast: jest.fn(),
-  alert: jest.fn()
+  alert: jest.fn(),
+  getSystemInfoSync: jest.fn()
 }
 
-global.getApp = jest.fn()
+const appOptions = {
+  globalData: {}
+}
+
+global.getApp = jest.fn(() => appOptions)
 
 const noop = () => {}
 const isFn = fn => typeof fn === 'function'
@@ -25,12 +30,14 @@ global.Page = ({ data, ...rest }) => {
       }
       cb && cb()
     }),
-    onLoad: noop,
-    onReady: noop,
-    onUnLoad: noop,
-    __wxWebviewId__: wId++,
-    ...rest,
+    ...rest
   };
   global.wxPageInstance = page
   return page
+}
+
+global.delay = timeout => {
+  return new Promise((resolve) => {
+    setTimeout(() => resolve(), timeout)
+  })
 }
