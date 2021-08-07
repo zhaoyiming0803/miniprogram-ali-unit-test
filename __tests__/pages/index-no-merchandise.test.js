@@ -19,7 +19,7 @@ describe('非正常返回值', () => {
     })
 
     currentPage.onLoad({
-      merchtypeId: 121313
+      merchtypeId: 1213131
     })
   })
 
