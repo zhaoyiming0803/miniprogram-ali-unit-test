@@ -67,5 +67,36 @@ enhancePage({
       console.log('mock sumit order......')
       this.data.isAllowSubmit = true
     }, 3000)
+  },
+  fetchPartnerInfo() {
+    const { currentPartnerId } = this.data;
+    if (!currentPartnerId) {
+      return;
+    }
+
+    try {
+      const response = {
+        code: 0,
+        data: {
+          address: 'this is address',
+          residentialname: 'this is residentialname',
+          partnerId: 'this is partnerId',
+          isFreeze: 'this is isFreeze',
+          isRefrigerate: 'this is isRefrigerate'
+        }
+      }
+      const currentPartner = {
+        detailedAddress: response.data.address,
+        residentialName: response.data.residentialname,
+        partnerId: currentPartnerId,
+        isFreeze: response.data.isFreeze,
+        isRefrigerate: response.data.isRefrigerate,
+      };
+      this.setData({
+        currentPartner,
+      });
+    } catch (error) {
+      throw error;
+    }
   }
 })
