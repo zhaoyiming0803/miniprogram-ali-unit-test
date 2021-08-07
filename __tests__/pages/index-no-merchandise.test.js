@@ -28,5 +28,6 @@ describe('非正常返回值', () => {
     expect(my.showToast).toBeCalled()
     expect(currentPage.data.a).toBeUndefined()
     expect(currentPage.data.res2).toBe('')
+    expect(currentPage.data.merchtypeId).toBe(1213131)
   })
 })
