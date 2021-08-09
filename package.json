@@ -3,19 +3,21 @@
     "test": "jest --coverage"
   },
   "devDependencies": {
-    "@babel/plugin-transform-modules-commonjs": "^7.14.5",
+    "@babel/plugin-transform-runtime": "^7.15.0",
+    "@babel/preset-env": "^7.15.0",
+    "babel-plugin-add-module-exports": "^1.0.4",
     "husky": "^4.3.8",
-    "jest": "^27.0.6",
-    "miniprogram-simulate": "^1.4.1"
+    "jest": "^27.0.6"
   },
   "jest": {
-    "testEnvironment": "jsdom",
+    "verbose": true,
     "testMatch": [
       "**/__tests__/**/*.test.js"
     ],
     "setupFiles": [
       "./__tests__/ali.js"
     ],
+    "collectCoverage": true,
     "collectCoverageFrom": [
       "./pages/**/*.js",
       "./utils/*.js"

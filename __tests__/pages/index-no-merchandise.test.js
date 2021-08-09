@@ -8,7 +8,6 @@ const currentPage = global.wxPageInstance
 describe('非正常返回值', () => {
   beforeAll(() => {
     jest.spyOn(currentPage, 'getRes1')
-    jest.spyOn(currentPage, 'getRes2')
 
     getRes1.mockImplementation(() => {
       return new Promise((resolve) => {

@@ -1,5 +1,5 @@
 import { enhancePage } from '../../utils/enhancePage'
-import apis from '../../apis'
+import {getRes1, getRes2} from '../../apis'
 
 const app = getApp()
 
@@ -32,7 +32,7 @@ enhancePage({
     }
   },
   async getRes1 () {
-    return apis.getRes1()
+    return getRes1()
   },
   getRes2 () {
     if (!this.data.a) {
@@ -48,7 +48,7 @@ enhancePage({
       })
       return Promise.resolve()
     }
-    return apis.getRes2()
+    return getRes2()
   },
   onRefresh () {
     getApp().globalData.token = 'this is token'
