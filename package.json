@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "ci": "node ./scripts/miniprogram-ci.js"
   },
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.15.0",
