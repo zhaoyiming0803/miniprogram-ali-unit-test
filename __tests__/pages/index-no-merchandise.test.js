@@ -1,15 +1,15 @@
 import '../../pages/index/index'
-import getRes1 from '../../apis/getRes1'
+import request from '../../utils/request'
 
-jest.mock('../../apis/getRes1')
+jest.mock('../../utils/request')
 
-const currentPage = global.wxPageInstance
+const currentPage = global.pageInstance
 
 describe('非正常返回值', () => {
   beforeAll(() => {
     jest.spyOn(currentPage, 'getRes1')
 
-    getRes1.mockImplementation(() => {
+    request.mockImplementation(() => {
       return new Promise((resolve) => {
         resolve({
           b: 2

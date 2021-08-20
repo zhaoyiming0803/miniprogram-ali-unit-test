@@ -1,1 +1,1 @@
-<view class="header-container">{{ headerContent }}</view>
+<view class="header-container" onTap="changeA">{{ headerContent }}</view>

@@ -1,29 +1,21 @@
 import '../../pages/index/index'
-import getRes1 from '../../apis/getRes1'
-import getRes2 from '../../apis/getRes2'
+import request from '../../utils/request'
+jest.mock('../../utils/request')
 
-jest.mock('../../apis/getRes1')
-jest.mock('../../apis/getRes2')
-
-const currentPage = global.wxPageInstance
+const currentPage = global.pageInstance
 
 describe('onLoad、getRes1、getRes2', () => {
   beforeAll(() => {
-    getRes1.mockImplementation(() => {
-      return new Promise((resolve) => {
-        resolve({
-          a: 1,
-          b: 2
+    request.mockImplementation(({apiRoot, url}) => {
+      if (url === 'getRes1') {
+        return Promise.resolve({
+          a: 1, 
+          b: 222222
         })
-      })
+      } else if (url === 'getRes2') {
+        return Promise.resolve('res2')
+      }
     })
-    
-    getRes2.mockImplementation(() => {
-      return new Promise((resolve) => {
-        resolve('res2')
-      })
-    })
-
     currentPage.onLoad({
       merchtypeId: 1213131
     })

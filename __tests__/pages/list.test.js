@@ -1,8 +1,8 @@
 import '../../pages/list/list'
 
-const currentPage = global.wxPageInstance
+const currentPage = global.pageInstance
 
-describe('index page unit testing', () => {
+describe('list page unit testing', () => {
   describe('onLoad', () => {
     beforeAll(() => {
       currentPage.onLoad()

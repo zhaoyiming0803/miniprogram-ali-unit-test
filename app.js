@@ -1,14 +1,24 @@
-App({
+import { mixinEmitter } from './utils/emitter'
+App(mixinEmitter({
   globalData: {
     
   },
   onLaunch(options) {
-    // 第一次打开
-    // options.query == {number:1}
-    console.info('App onLaunch');
+    console.log('app onLaunch')
+    this.on('changeA', payload => {
+      console.log('changeA payload in app launch: ', payload)
+    })
+    // my.call(
+    //   'getStartupParams',
+    //   {
+    //     key: 'spm',
+    //   },
+    //   res => {
+    //     console.log('getStartupParamsSync: ', res)
+    //   }
+    // );
   },
   onShow(options) {
-    // 从后台被 scheme 重新打开
-    // options.query == {number:1}
+    console.log('app onshow')
   },
-});
+}));

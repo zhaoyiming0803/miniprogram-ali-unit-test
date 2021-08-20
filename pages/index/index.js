@@ -1,9 +1,10 @@
 import { enhancePage } from '../../utils/enhancePage'
-import {getRes1, getRes2} from '../../apis'
+import { mixinEmitter } from '../../utils/emitter'
+import { request } from '../../utils/request'
 
 const app = getApp()
 
-enhancePage({
+Page(mixinEmitter({
   data: {
     a: '',
     b: '',
@@ -12,11 +13,28 @@ enhancePage({
     isAllowSubmit: true
   },
   async onLoad (options) {
+    // my.getAuthCode({
+    //   scopes: 'order_service',
+    //   success: res => {
+    //     console.log('getAuthCode success res: ', res)
+    //   }
+    // })
+    this.on('changeA', (payload) => {
+      console.log('changeA payload in index page: ', payload)
+    });
     const { merchtypeId } = options
     this.setData({
       merchtypeId
     })
     this.init()
+    return
+
+    my.navigateTo({
+      url: '/pages/list/list',
+      complete: ({error, errorMessage}) => {
+        console.log('navigate to list1 page: ', error, errorMessage)
+      }
+    });
   },
   async init () {
     const res1 = await this.getRes1()
@@ -32,7 +50,10 @@ enhancePage({
     }
   },
   async getRes1 () {
-    return getRes1()
+    // return getRes1()
+    return request({
+      url: 'getRes1'
+    })
   },
   getRes2 () {
     if (!this.data.a) {
@@ -48,7 +69,9 @@ enhancePage({
       })
       return Promise.resolve()
     }
-    return getRes2()
+    return request({
+      url: 'getRes2'
+    })
   },
   onRefresh () {
     getApp().globalData.token = 'this is token'
@@ -68,4 +91,4 @@ enhancePage({
       this.data.isAllowSubmit = true
     }, 3000)
   }
-})
+}))
