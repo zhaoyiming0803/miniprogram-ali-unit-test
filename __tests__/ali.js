@@ -94,7 +94,7 @@ global.Page = ({ data, ...rest }) => {
      * mock ali miniprogram this.setData function
      * https://opendocs.alipay.com/mini/framework/page-detail#Page.prototype.setData(data%3A%20Object%2C%20callback%3A%20Function)
      */
-    setData: jest.fn(function setData(newData, cb) {
+     setData: jest.fn(function setData(newData, cb) {
       const keys = Object.keys(newData)
       keys.forEach(key => {
         const arr = []
@@ -141,12 +141,12 @@ global.Page = ({ data, ...rest }) => {
       keys.forEach(key => {
         let _obj
         const _keys = key.split('.')
-        const arr = _keys.reduce((cur, pre) => {
-          _obj = cur
+        const arr = _keys.reduce((data, prop) => {
+          _obj = data
           const reg = /(\w+)?(\[(\d+)\])/g
           let matched
           let mark = false
-          while (matched = reg.exec(pre)) {
+          while (matched = reg.exec(prop)) {
             mark = true
             if (matched[1]) {
               _obj = _obj[matched[1]]
@@ -156,7 +156,7 @@ global.Page = ({ data, ...rest }) => {
             }
           }
           if (mark) return _obj
-          return _obj[pre]
+          return _obj[prop]
         }, this.data)
         arr.splice(data[key][0], data[key][1], ...data[key].slice(2))
       })
